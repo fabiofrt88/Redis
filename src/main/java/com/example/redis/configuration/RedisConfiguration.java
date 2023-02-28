@@ -24,7 +24,7 @@ public class RedisConfiguration {
     private String redisDatabase;
 
     @Bean
-    JedisConnectionFactory jedisConnectionFactory(){
+    JedisConnectionFactory jedisConnectionFactory() {
         RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration(redisHost, redisPort);
         redisStandaloneConfiguration.setPassword(RedisPassword.of(redisPassword));
         redisStandaloneConfiguration.setDatabase(0);
@@ -32,10 +32,11 @@ public class RedisConfiguration {
     }
 
     @Bean
-    public RedisTemplate<String, Object> redisTemplate(){
+    public RedisTemplate<String, Object> redisTemplate() {
         RedisTemplate<String, Object> template = new RedisTemplate<>();
         template.setConnectionFactory(jedisConnectionFactory());
         return template;
     }
+
 
 }
